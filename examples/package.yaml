@@ -26,7 +26,8 @@ default-extensions:
 - DeriveAnyClass
 
 dependencies:
-- base >= 4.7 && < 5
+- base
+- random
 
 library:
   source-dirs: src

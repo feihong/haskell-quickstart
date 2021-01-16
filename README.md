@@ -2,7 +2,11 @@
 
 ## Prerequisites
 
+Install Stack:
+
     curl -sSL https://get.haskellstack.org/ | sh
+
+Install Haskell extension for VS Code
 
 ## Create project
 
@@ -15,6 +19,10 @@
 Run main executable
 
     stack run
+
+Run a script
+
+    stack runghc hello.hs
 
 ## Links
 
