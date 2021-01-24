@@ -24,6 +24,10 @@ Run a script
 
     stack runghc hello.hs
 
+Run repl
+
+    stack ghci
+
 ## Links
 
 - [No Bullshit Haskell](https://github.com/alpacaaa/zero-bullshit-haskell)
