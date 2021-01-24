@@ -106,7 +106,12 @@ instance Applicative [] where
 
 ## Monad
 
-tbd
+```haskell
+class Applicative m => Monad m where
+    return :: a -> m a
+
+    (>>=) :: forall a b. m a -> (a -> m b) -> m b
+```
 
 Examples:
 
@@ -118,4 +123,42 @@ Prelude|   b <- Just 3
 Prelude|   return $ a * b
 Prelude| :}
 Just 12
+
+Prelude> :{
+Prelude| Just 4 >>= \a ->
+Prelude| Just 3 >>= \b ->
+Prelude| return $ a * b
+Prelude| :}
+Just 12
+
+Prelude> :{
+Prelude| do
+Prelude|   a <- [1,2]
+Prelude|   b <- [3,4,5]
+Prelude|   return $ a * b
+Prelude| :}
+[3,4,5,6,8,10]
+
+Prelude> [1,2,3] >>= \x -> [x, -x]
+[1,-1,2,-2,3,-3]
+```
+
+Typeclass instance for `Maybe`:
+
+```haskell
+instance Monad Maybe where
+    return x = Just x
+
+    Nothing >>= _ = Nothing
+    (Just x) >>= f x
+```
+
+Typeclass instance for `List`:
+
+```haskell
+instance Monad [] where
+    return x = [x]
+
+    [] >>= _ = []
+    x:xs >>= f = (f x) ++ (xs >>= f)
 ```
